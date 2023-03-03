@@ -1,0 +1,34 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+</head> 
+<body> 
+    <script> 
+        class Person{ 
+            constructor(gender){ 
+                this.gender = gender; 
+                console.log(this); 
+            } 
+            setName(name){ 
+                    this.name = name; 
+                } 
+            setAge(age){ 
+                    this.age = age; 
+                } 
+            getInfo(){ 
+                console.log(`Меня зовут:${this.name}`); 
+                console.log(`Мой возраст:${this.age}`); 
+                console.log(`Я - ${this.gender}`); 
+            } 
+        } 
+        let chel = new Person('Мужчина'); 
+        chel.setName('Сергей'); 
+        chel.setAge(29); 
+        chel.getInfo();  
+    </script> 
+</body> 
+</html>

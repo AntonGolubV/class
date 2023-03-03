@@ -1,0 +1,26 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+</head> 
+<body> 
+    <script> 
+        class Element{ 
+            constructor(color, number, mark){ 
+                this.color = color; 
+                this.number = number; 
+                this.mark = mark; 
+            } 
+            getInfo(){ 
+                console.log(`Maрка автомобиля:${this.mark}, его цвет:${this.color}`); 
+                console.log(`скорость:${this.number}`); 
+            } 
+        } 
+        let car1 = new Element('чёрный', 90, 'БМВ'); 
+        car1.getInfo(); 
+    </script> 
+</body> 
+</html>

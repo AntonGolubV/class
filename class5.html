@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        div{
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px;
+            position: absolute;
+            transform: rotate();
+        }
+    </style>
+    <script>
+
+        function color(){
+            return  Math.floor(Math.random() * 256);
+        }
+        function posX(){
+            return Math.trunc(Math.random() * (document.documentElement.clientWidth-100));
+        }
+        function posY(){
+            return Math.trunc(Math.random() * document.documentElement.clientHeight);
+        }
+        function trans(){
+            return  Math.trunc(Math.random() * 360);
+        }
+        class Crazyletters{
+            constructor(){
+                this.arguments = arguments;
+                console.log(this.arguments);
+                console.log(typeof this.arguments);
+            }
+            showLatters(){      
+                for(let item in this.arguments){
+                    let div = document.createElement('div');
+                    div.innerText = `${this.arguments[item]}`;
+                    div.style.color = `rgb(${color()}, ${color()}, ${color()})`;
+                    div.style.top = `${posY()}px`;
+                    div.style.left = `${posX()}px`;
+                    div.style.transform = `rotate(${trans()}deg)`;
+                    document.body.append(div);
+                }
+            }
+        }
+        
+        
+        let but = new Crazyletters('a','b','b','a','b','b','a','b','a');
+        but.showLatters();
+    </script>
+</body>
+</html>

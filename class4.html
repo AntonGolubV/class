@@ -1,0 +1,111 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Document</title>  
+    <style>  
+        .el{  
+            height: 300px;  
+            border-radius: 5%;  
+            position:absolute;  
+        }  
+        .up{  
+            width: 100%;  
+            height: 50%;  
+            display: flex;  
+            justify-content: center;  
+            text-align: center;  
+            align-items: center;  
+            color: white;  
+            background-color: blue; 
+  
+        }  
+        .down{  
+            width: 100%;  
+            height: 50%;  
+            display: flex;  
+            justify-content: center;  
+            text-align: center;  
+            align-items: center;  
+            color: white;  
+            background-color: blue; 
+        }  
+    </style>  
+</head>  
+<body>  
+    <script>  
+        class Modal{  
+            constructor(width, textH1, textP){  
+                this.__width = width;  
+                this.__textH1 = textH1;  
+                this.__textP = textP;  
+  
+                let el = document.createElement('div');  
+                this.el = el;  
+                this.el.classList.add('el');  
+                this.el.style.width = `${this.__width}px`;  
+                document.body.append(this.el);  
+  
+                let upBlock = document.createElement('div');  
+                this.upBlock = upBlock;  
+                this.upBlock.classList.add('up');  
+                this.upBlock.style.width = `${this.__width}px`;  
+                this.upBlock.innerText = this.__textH1;  
+                this.el.append(this.upBlock);  
+  
+                let downBlock = document.createElement('div');  
+                this.downBlock = downBlock;  
+                this.downBlock.classList.add('down');  
+                this.downBlock.style.width = `${this.__width}px`;  
+                this.downBlock.innerText = this.__textP;  
+                this.el.append(this.downBlock);  
+            }  
+         
+  
+            set pos(value){  
+                this.el.style.top = `${value.cordY}px`;  
+                this.el.style.left = `${value.cordX}px`;  
+            }  
+             set backgroundColor(color){  
+                this.upBlock.style.backgroundColor = color;  
+                this.downBlock.style.backgroundColor = color;  
+            }  
+            set textHeader(text){  
+                this.upBlock.innerText = text;  
+            }  
+            set modalText(textP){  
+                this.downBlock.innerText = textP;  
+            }  
+  
+        } 
+        let model1 = new Modal(500, 'Main', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. ');  
+         model1.pos = {  
+            cordY: 200,  
+            cordX: 400  
+        };  
+        model1.backgroundColor = 'red';  
+        model1.textHeader = 'Я новый заголовок'; 
+        model1.modalText = 'Я новый модальный заголовок';  
+        let isDrag = false; 
+ 
+        model1.el.addEventListener('mousedown', function(e){  
+                isDrag = true;  
+                offsetX = e.pageX - parseInt(getComputedStyle(model1.el).left);  
+                offsetY = e.pageY - parseInt(getComputedStyle(model1.el).top);  
+                console.log('x' + offsetX);  
+                console.log('y' + offsetY);  
+            });  
+        document.body.addEventListener('mouseup', () => {isDrag = false});  
+ 
+        document.body.addEventListener('mousemove', function(e){  
+                if(isDrag == true){  
+                    model1.el.style.left = (`${e.pageX - offsetX}px`);  
+                    model1.el.style.top = (`${e.pageY - offsetY}px`);   
+                }  
+});   
+         
+    </script>  
+</body>  
+</html>
